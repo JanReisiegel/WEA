@@ -1,10 +1,16 @@
 version: "3"
 services:
-  web:
+  backend:
     build:
-      context: .
-      dockerfile: dockerfile
+      context: ./backend
+      dockerfile: backend.dockerfile
     ports:
       - "5000:5000"
     volumes:
-      - ./logs:/app/logs
+      - ./backend/logs:/app/logs
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: frontend.dockerfile
+    ports:
+      - "3000:3000"
